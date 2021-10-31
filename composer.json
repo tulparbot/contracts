@@ -1,0 +1,26 @@
+{
+  "name": "tulparbot/contracts",
+  "description": "Tulpar Bot Contracts",
+  "version": "dev-master",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Isa Eken",
+      "email": "hello@isaeken.com.tr",
+      "homepage": "https://www.isaeken.com.tr",
+      "role": "Founder"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "Tulpar\\Contracts\\": "src"
+    }
+  },
+  "require": {
+    "php": "^8.0",
+    "team-reflex/discord-php": "dev-master"
+  }
+}
