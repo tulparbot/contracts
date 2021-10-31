@@ -6,6 +6,8 @@ use Discord\Discord;
 use Discord\Parts\Channel\Message;
 use Discord\Parts\User\Member;
 use Discord\Parts\User\User;
+use Tulpar\Contracts\Extension\ArgumentInterface;
+use Tulpar\Contracts\Extension\OptionInterface;
 
 interface CommandInterface
 {
@@ -38,11 +40,27 @@ interface CommandInterface
     public function getArguments(): array;
 
     /**
+     * Add argument
+     *
+     * @param  ArgumentInterface  $argument
+     * @return $this
+     */
+    public function addArgument(ArgumentInterface $argument): self;
+
+    /**
      * Get the options.
      *
      * @return array
      */
     public function getOptions(): array;
+
+    /**
+     * Add option.
+     *
+     * @param  OptionInterface  $option
+     * @return $this
+     */
+    public function addOption(OptionInterface $option): self;
 
     /**
      * Get the required permissions.
