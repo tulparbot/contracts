@@ -4,71 +4,73 @@ namespace Tulpar\Contracts;
 
 use Discord\Discord;
 use Discord\Parts\Channel\Message;
+use Discord\Parts\User\Member;
+use Discord\Parts\User\User;
 
 interface CommandInterface
 {
     /**
-     * Get the command name of command class.
+     * Get the command string.
      *
      * @return string
      */
-    public static function getCommand(): string;
+    public function getCommand(): string;
 
     /**
-     * Get the command description.
+     * Get command description.
      *
      * @return string
      */
-    public static function getDescription(): string;
+    public function getDescription(): string;
 
     /**
      * Get the command version.
      *
      * @return string
      */
-    public static function getVersion(): string;
+    public function getVersion(): string;
 
     /**
-     * The required argument keys.
+     * Get the arguments.
      *
      * @return array
      */
-    public static function getRequires(): array;
+    public function getArguments(): array;
 
     /**
-     * The required permissions.
+     * Get the options.
      *
      * @return array
      */
-    public static function getPermissions(): array;
+    public function getOptions(): array;
 
     /**
-     * Get example valid usage of the command.
+     * Get the required permissions.
      *
-     * @return string
+     * @return array
      */
-    public static function getUsages(): string;
+    public function getPermissions(): array;
+
+    /**
+     * Get example valid usages of the command.
+     *
+     * @return array
+     */
+    public function getExampleUsages(): array;
 
     /**
      * Get help of the command.
      *
      * @return string
      */
-    public static function getHelp(): string;
+    public function getHelpText(): string;
 
     /**
-     * Get command category.
-     *
-     * @return string
-     */
-    public static function getCategory(): string;
-
-    /**
-     * Check if this command are allowed in private channel.
+     * Check allowed in private channel.
      *
      * @return bool
      */
-    public static function isAllowedPm(): bool;
+    public function isAllowedInPrivateChannel(): bool;
 
     /**
      * The Tulpar Bot Command Constructor.
@@ -81,10 +83,10 @@ interface CommandInterface
     /**
      * Check command access.
      *
-     * @param  bool  $messages
+     * @param  Member|User|string|null  $member
      * @return bool
      */
-    public function checkAccess(bool $messages = false): bool;
+    public function can(Member|User|string|null $member = null): bool;
 
     /**
      * Check command ready to use.
@@ -96,5 +98,5 @@ interface CommandInterface
     /**
      * Execute the command.
      */
-    public function run(): void;
+    public function run(): string;
 }
